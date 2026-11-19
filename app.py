@@ -14,6 +14,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
+from posthog_demo import tab_posthog
 from abtest_stats import (
     sample_size_per_arm,
     simulate_peeking,
@@ -294,10 +295,11 @@ if "visitor" not in st.session_state:
 
 st.title("A/B test lab")
 st.caption("OM 286 · Digital Product Process")
-t1, t2, t3, t4 = st.tabs([
+t1, t2, t3, t5, t4 = st.tabs([
     ":material/groups: Run the experiment",
     ":material/visibility: Peeking trap",
     ":material/calculate: Sample size",
+    ":material/hub: Real platform: PostHog",
     ":material/menu_book: How it works",
 ])
 with t1:
@@ -306,6 +308,8 @@ with t2:
     tab_peeking()
 with t3:
     tab_power()
+with t5:
+    tab_posthog(VARIANTS)
 with t4:
     st.markdown(
         """
